@@ -22,16 +22,16 @@ fprintf('\nSelected file: %s \nPress Enter to load data.\n',inputFileName);
 pause;
    
 fprintf('Loading data ...\n');
-data = load([inputFilePath '\' inputFileName]);	%The sample file containing the training data. The Ô¨Årst column is the size of the house (in square feet), the second column is the number of bedrooms, and the third column is the price of the house. 
-X = data(:, 1:2);	%Inputs
-y = data(:, 3);		%Outputs
+data = load([inputFilePath '\' inputFileName]);	%The sample file containing the training data. The Ô¨?rst column is the size of the house (in square feet), the second column is the number of bedrooms, and the third column is the price of the house. 
+X = data(:,1:end-1);	%Inputs
+y = data(:,end);		%Outputs
 m = length(y);		%Number of training examples
-
+num_features = size(X,2); %No of features, which is the dimension of X
 
 
 % Print out some data points
 fprintf('\nData loaded.\nFirst 10 examples from the dataset: \n');
-fprintf(' x = [%.0f %.0f], y = %.0f \n', [X(1:10,:) y(1:10,:)]');
+disp([X(1:10,:),y(1:10,:)])
 fprintf('\nPress enter to start Feature Normalization.\n');
 pause;
 
@@ -42,7 +42,7 @@ pause;
 
 % Scale features and set them to zero mean
 fprintf('\nNormalizing Features ...\n');
-[X mu sigma] = featureNormalize(X);		% Returned X = Feature normalized training inputs, X = (X-mu)/sigma, where mu = mean of X, sigma = standard deviation of X
+[X, mu, sigma] = featureNormalize(X);		% Returned X = Feature normalized training inputs, X = (X-mu)/sigma, where mu = mean of X, sigma = standard deviation of X
 
 
 fprintf('\nFeature Normalization complete. Press enter to start Gradient Descent.\n');
@@ -67,7 +67,7 @@ num_iters = input("\nEnter number of iterations \nOr \npress Enter to use defaul
 if (isempty(num_iters))
 	num_iters = 500;	%Default Number if iterations
 else
-	num_iters = floor(num_iters)	%Convert into integer
+	num_iters = floor(num_iters);	%Convert into integer
 end
 fprintf('\nNumber of iterations: %d\n',num_iters);
 
@@ -78,7 +78,7 @@ fprintf('\nNumber of iterations: %d\n',num_iters);
 fprintf('\nRunning gradient descent ...\n');	
 
 % Init Theta and Run Gradient Descent 
-theta = zeros(3, 1);
+theta = zeros(num_features+1, 1);
 [theta, J_history] = gradientDescent(X, y, theta, alpha, num_iters);
 
 fprintf('\nGradient Descent complete. Press enter to display results.\n');
@@ -107,13 +107,17 @@ fprintf('\n');
 
 fprintf('\nModel training complete. Press enter to start Prediction.\n');
 pause;
+pred_x = zeros(1,num_features);
 
-price = [1,([1850 3]-mu)./sigma]*theta;
+for i = 1:num_features
+    pred_x(i)=input(strcat("Enter feature no. ",int2str(i),": "));
+end
+
+pred_y = [1,(pred_x-mu)./sigma]*theta;
 
 % ============================================================
 
-fprintf(['Predicted price of a 1850 sq-ft, 3 bedroom house'...
-         ':\n $%f\n'], price);
+fprintf('\nPredicted output: \n%f\n', pred_y);
 
 fprintf('\n\nProgram paused. Press enter to Exit.\n');
 pause;
