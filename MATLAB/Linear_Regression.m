@@ -55,12 +55,27 @@ X = [ones(m, 1) X];
 
 %% ================ Part 2: Gradient Descent ================
 
+%Input alpha and number of iteration values
+
+alpha = input("Enter learning rate \nOr \npress Enter to use default (0.01): ");
+if (isempty(alpha))
+	alpha = 0.01;		%Default Learning rate
+end
+fprintf('\nLearning rate: %g\n',alpha);
+
+num_iters = input("\nEnter number of iterations \nOr \npress Enter to use default (500): ");
+if (isempty(num_iters))
+	num_iters = 500;	%Default Number if iterations
+else
+	num_iters = floor(num_iters)	%Convert into integer
+end
+fprintf('\nNumber of iterations: %d\n',num_iters);
+
+
+
+
+
 fprintf('\nRunning gradient descent ...\n');	
-
-% Choose some alpha value
-alpha = 0.01;		%Learning rate
-num_iters = 500;	%Number if iterations
-
 
 % Init Theta and Run Gradient Descent 
 theta = zeros(3, 1);
