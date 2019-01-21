@@ -24,14 +24,14 @@ pause;
 fprintf('Loading data ...\n');
 data = load([inputFilePath '\' inputFileName]);	%The sample file containing the training data. The ям?rst column is the size of the house (in square feet), the second column is the number of bedrooms, and the third column is the price of the house. 
 X = data(:,1:end-1);	%Inputs
-y = data(:,end);		%Outputs
-m = length(y);		%Number of training examples
+Y = data(:,end);		%Outputs
+m = length(Y);		%Number of training examples
 num_features = size(X,2); %No of features, which is the dimension of X
 
 
 % Print out some data points
 fprintf('\nData loaded.\nFirst 10 examples from the dataset: \n');
-disp([X(1:10,:),y(1:10,:)])
+disp([X(1:10,:),Y(1:10,:)])
 fprintf('\nPress enter to start Feature Normalization.\n');
 pause;
 
@@ -79,7 +79,7 @@ fprintf('\nRunning gradient descent ...\n');
 
 % Init Theta and Run Gradient Descent 
 theta = zeros(num_features+1, 1);
-[theta, J_history] = gradientDescent(X, y, theta, alpha, num_iters);
+[theta, J_history] = gradientDescent(X, Y, theta, alpha, num_iters);
 
 fprintf('\nGradient Descent complete. Press enter to display results.\n');
 pause;
