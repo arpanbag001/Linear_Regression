@@ -22,7 +22,7 @@ fprintf('\nSelected file: %s \nPress Enter to load data.\n',inputFileName);
 pause;
    
 fprintf('Loading data ...\n');
-data = load([inputFilePath '\' inputFileName]);	%The sample file containing the training data. The ям?rst column is the size of the house (in square feet), the second column is the number of bedrooms, and the third column is the price of the house. 
+data = load([inputFilePath '\' inputFileName]);	%The file containing the training data. The Last column is the output (Y) and the rest of the columns are input (X) 
 X = data(:,1:end-1);	%Inputs
 Y = data(:,end);		%Outputs
 m = length(Y);		%Number of training examples
