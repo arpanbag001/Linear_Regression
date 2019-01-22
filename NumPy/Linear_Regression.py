@@ -6,6 +6,7 @@ import numpy as np
 import os
 import pdb
 
+from Linear_Regression_Helper import *
 
 
 
@@ -35,4 +36,45 @@ input('\nPress enter to start Feature Normalization.\n')
 
 
 
+
+
+
 ## ================ Part 1: Feature Normalization ================
+
+
+#Scale features and set them to zero mean
+print('\nNormalizing Features ...\n') 
+[X, mu, sigma] = featureNormalize(X)	#Returned X = Feature normalized training inputs, X = (X-mu)/sigma, where mu = mean of X, sigma = standard deviation of X
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
