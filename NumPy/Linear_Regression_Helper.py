@@ -6,7 +6,6 @@
 
 ## Initialization
 import numpy as np
-import pdb
 
 
 #=================== Feature Normalization =========================
@@ -113,35 +112,3 @@ def computeCost(X, Y, theta):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-       
