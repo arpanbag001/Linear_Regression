@@ -100,7 +100,6 @@ fprintf('\n');
 %% ======================== Prediction ===========================
 
 
-% Estimate the price of a 1850 sq-ft, 3 bedroom house
 % ======================== CODE HERE =========================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
@@ -110,7 +109,7 @@ pause;
 pred_x = zeros(1,num_features);
 
 for i = 1:num_features
-    pred_x(i)=input(strcat("Enter feature no. ",int2str(i),": "));
+    pred_x(i)=input(strcat("Enter feature No. ",int2str(i),": "));
 end
 
 pred_y = [1,(pred_x-mu)./sigma]*theta;

@@ -1,7 +1,7 @@
 %%Arpan Bag
 %%Cost Function
 
-function J = computeCost(X, y, theta)
+function J = computeCost(X, Y, theta)
 
 %COMPUTECOST Compute cost for linear regression with multiple variables
 %   J = COMPUTECOST(X, y, theta) computes the cost of using theta as the
@@ -11,17 +11,16 @@ function J = computeCost(X, y, theta)
 
 
 % Initialize some useful values
-m = length(y); % number of training examples
+m = length(Y); %Number of training examples
 
 J = 0;	%Cost
 
 % =========================== CODE HERE ========================
 % Instructions: Compute the cost of a particular choice of theta
-%               You should set J to the cost.
+%               Should set J to the cost.
 
 
-J = 1/(2*m)*sum((X*theta - y).^2);
-
+J = 1/(2*m)*sum((X*theta - Y).^2);
 
 
 % =========================================================================
