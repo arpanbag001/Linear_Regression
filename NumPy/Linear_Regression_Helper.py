@@ -6,7 +6,7 @@
 
 ## Initialization
 import numpy as np
-
+import pdb
 
 
 #=================== Feature Normalization =========================
@@ -49,17 +49,92 @@ def featureNormalize(X):
 	
 	
 	
+#======================= Gradient Descent =========================	
+#GRADIENTDESCENT Performs gradient descent to learn theta
+#   theta = GRADIENTDESCENT(x, y, theta, alpha, num_iters) updates theta by
+#   taking num_iters gradient steps with learning rate alpha
+	
+def gradientDescent(X, Y, theta, alpha, num_iters):	
+	#Initialize some useful values
+	m = len(Y) # number of training examples
+	J_history = np.zeros((num_iters, 1))
+	
+	for iter in range(num_iters):
+
+		# =========================== CODE HERE ==============================
+		# Instructions: Perform a single gradient step on the parameter vector
+		#               theta. 
+    
+		# Hint: While debugging, it can be useful to print out the values
+		#       of the cost function (computeCost) and gradient here.
+		#
+
+		derivativePart = 1/m*np.sum((np.dot(X,theta) - Y)*X,axis=0,keepdims=True)
+		
+		theta = theta - (alpha*derivativePart.T)
+
+		
+
+		# ============================================================
+
+		# Save the cost J in every iteration    
+		J_history[iter] = computeCost(X, Y, theta)
+
+	return theta, J_history	
 	
 	
 	
 	
+
 	
 	
+
+	
+#======================= Cost Function =========================	
+#COMPUTECOST Compute cost for linear regression with multiple variables
+#   J = COMPUTECOST(X, y, theta) computes the cost of using theta as the
+#   parameter for linear regression to fit the data points in X and y
 	
 	
+def computeCost(X, Y, theta):
+	#Initialize some useful values
+	m = len(Y) #Number of training examples
 	
+	J = 0	#Cost
+
+	# =========================== CODE HERE ========================
+	# Instructions: Compute the cost of a particular choice of theta
+	#               Should set J to the cost.
+
 	
-	
+	J = 1/(2*m)*np.sum(np.square(np.dot(X,theta) - Y))
+
+	return J
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 	
