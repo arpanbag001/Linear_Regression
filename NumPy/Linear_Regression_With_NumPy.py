@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-from Linear_Regression_Helper import *
+from Linear_Regression_Helper_NumPy import *
 
 
 np.set_printoptions(formatter={'float_kind':'{:f}'.format})	#Display numbers normally, not using exponent.
