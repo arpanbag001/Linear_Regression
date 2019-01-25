@@ -4,6 +4,7 @@
 ## Initialization
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn import preprocessing
 import os
 
 from Linear_Regression_Helper_TensorFlow import *
@@ -47,7 +48,10 @@ input('\nPress enter to start Feature Normalization.\n')
 
 #Scale features and set them to zero mean
 print('\nNormalizing Features ...\n') 
-[X, mu, sigma] = featureNormalize(X)	#Returned X = Feature normalized training inputs, X = (X-mu)/sigma, where mu = mean of X, sigma = standard deviation of X
+scaler = preprocessing.StandardScaler().fit(X) #Returned X = Feature normalized training inputs, X = (X-mu)/sigma, where mu = mean of X, sigma = standard deviation of X
+mu = scaler.mean_	#mean
+sigma = scaler.scale_	#standard deviation
+X = scaler.transform(X)
 
 #Add x0 intercept term to X (As x0 = 1 for all the examples)
 X = np.column_stack((np.ones((m,1)),X))
