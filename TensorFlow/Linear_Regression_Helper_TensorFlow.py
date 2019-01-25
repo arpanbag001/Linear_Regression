@@ -57,6 +57,34 @@ def gradientDescent(X, Y, learning_rate, num_iters):
 	return theta, J_history	
 	
 	
+
+	
+	
+	
+	
+	
+	
+
+#================================= Prediction ======================================	
+#Predicts the output (Y) for the given Input (X) and the Parameters (Theta)
+
+def predict(pred_x,theta):
+
+	Tf_x = tf.placeholder(tf.float32)	#Input node
+	Tf_theta = tf.placeholder(tf.float32)	#Parameters node
+	linear_regression_prediction_model = tf.matmul(Tf_x,Tf_theta)		#Model for calculating Output 
+	
+	sess = tf.Session()
+	
+	pred_y  = sess.run(linear_regression_prediction_model,{Tf_x:pred_x,Tf_theta:theta})
+	
+	return pred_y
+
+
+
+
+	
+	
 	
 
 

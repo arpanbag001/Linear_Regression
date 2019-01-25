@@ -116,8 +116,11 @@ pred_x = np.zeros((1,num_features))
 
 for i in range(num_features):
     pred_x[:,i]=input("Enter feature No. "+str(i+1)+": ")
+	
+pred_x = (pred_x-mu)/sigma		#Standardization
+pred_x = np.append([[1]],pred_x,axis=1)	#Adding x0 = 1
 
-pred_y = np.dot(np.append(1,(pred_x-mu)/sigma),theta)
+pred_y = predict(pred_x,theta)	#Predict using helper function
 
 #============================================================
 
