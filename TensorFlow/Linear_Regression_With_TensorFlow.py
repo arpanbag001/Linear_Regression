@@ -35,7 +35,7 @@ num_features = X.shape[1]	 #No of features, which is the dimension of X
 #Print out some data points
 print('\nData loaded.\nFirst 10 examples from the dataset: \n')
 print(np.column_stack((X,Y))[0:10,:])
-input('\nPress enter to start Feature Normalization.\n')
+input('\nPress enter to start Feature Standardization.\n')
 
 
 
@@ -43,12 +43,12 @@ input('\nPress enter to start Feature Normalization.\n')
 
 
 
-## ================ Part 1: Feature Normalization ================
+## ================ Part 1: Feature Standardization ================
 
 
 #Scale features and set them to zero mean
-print('\nNormalizing Features ...\n') 
-scaler = preprocessing.StandardScaler().fit(X) #Returned X = Feature normalized training inputs, X = (X-mu)/sigma, where mu = mean of X, sigma = standard deviation of X
+print('\nStandardizing Features ...\n') 
+scaler = preprocessing.StandardScaler().fit(X) #Returned X = Feature standardized training inputs, X = (X-mu)/sigma, where mu = mean of X, sigma = standard deviation of X
 mu = scaler.mean_	#mean
 sigma = scaler.scale_	#standard deviation
 X = scaler.transform(X)
@@ -108,7 +108,7 @@ print('\n');
 
 # ======================== CODE HERE =========================
 # Recall that the first column of X is all-ones. Thus, it does
-# not need to be normalized.
+# not need to be standardized.
 
 print('\nModel training complete. Press enter to start Prediction.\n')
 input()
