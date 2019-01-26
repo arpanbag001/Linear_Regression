@@ -1,0 +1,3 @@
+Column 1: Area of house in sq-ft
+Column 2: Number of bedrooms
+Column 3: Price of the house
